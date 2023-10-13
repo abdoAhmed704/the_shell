@@ -9,14 +9,17 @@
 
 char *get_line(void)
 {
-	size_t num, length = 0;
+	ssize_t num;
+       	size_t length = 0;
 	char *lline = NULL;
 
 	num = getline(&lline, &length, stdin);
 	
-	if (num < 0)
+	if (num == -1)
+	{	
+		free(lline);
 		return (NULL);
-
+	}
 	return (lline);
 
 }

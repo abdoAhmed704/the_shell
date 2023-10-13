@@ -16,16 +16,12 @@
 
 
 char *get_line(void);
+char **tokener(char *lline);
 
+/*string.h function*/
+char *_strcopy(char *dest, char *src);
+char *_strdup(const char *str);
 
-
-
-
-
-
-
-
-
-
+void free_two(char **free_1, char **free_2);
 
 #endif
