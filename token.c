@@ -20,7 +20,7 @@ char **tokener(char *lline)
 		free_two(&lline, &temp);
 		return (NULL);
 	}
-	while (token)
+	for (; token;)
 	{
 		counter++;
 		token = strtok(NULL, " \t\n");
@@ -33,7 +33,7 @@ char **tokener(char *lline)
 		return (NULL);
 	}
 	token = strtok(lline, " \t\n");
-	while (token)
+	for (; token;)
 	{
 		arguments[index++] = _strdup(token);
 		token = strtok(NULL, " \t\n");

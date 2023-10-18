@@ -11,23 +11,24 @@
 int main(int ac, char **av)
 {
 	char *getted_line = NULL, **arguments;
-	int flag = 0;
+	int flag = 0, index = 0;
 	(void) ac;
 
 	while (1)
 	{	
-		if(isatty(STDIN_FILENO))
+		if(isatty(STDIN_FILENO) != 0)
 			write(1, "$ ", 2);
 		getted_line = get_line();
 		if (getted_line == NULL)
 		{
-			if (isatty(STDIN_FILENO))
+			if (isatty(STDIN_FILENO) != 0)
 				write(1, "\n", 1);
 			return (flag);
 		}
 		arguments = tokener(getted_line);
+		index++;
 		if (!arguments)
 			continue;
-		flag = execute_func(av, arguments);
+		flag = execute_func(av, arguments, index);
 	}
 }
